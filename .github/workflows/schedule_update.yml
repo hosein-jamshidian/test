@@ -1,0 +1,26 @@
+name: Update Google Sheet
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Runs every 15 minutes
+
+jobs:
+  update-sheet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'  # Replace with your Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Python script
+      run: python python_code.py
