@@ -23,4 +23,6 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Python script
+      env:
+        GOOGLE_API_KEY: ${{ secrets.TEST_KEY }}
       run: python python_code.py
